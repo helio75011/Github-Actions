@@ -1,0 +1,25 @@
+name: Build and Test Workflow
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout du code
+              uses: actions/checkout@v3
+
+            - name: Simuler la compilation
+              run: echo "build terminé !"
+
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout du code
+              uses: actions/checkout@v3
+
+            - name: lancer les tests
+              run: echo "Tests exécutés après build"
