@@ -1,15 +1,25 @@
-name: Hello World Workflow
+name: Node.js CI
 
 on:
     push:
-        branches:
-            - main
+    pull_request:
             
 jobs:
     greeting:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Afficher Hello World
-              run: echo "Hello World"
+            - name: Checkout du code
+              uses: actions/checkout@v3
+
+            - name: Installer Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+
+            - name: Installer les dépendances
+              run: npm install
+
+            - name: Lancer le Lint
+              run: npm run lint
         
