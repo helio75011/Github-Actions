@@ -1,0 +1,24 @@
+name: Node.js CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'   # ou 16 si ton projet utilise cette version
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Lancer le Lint
+        run: npm run lint
