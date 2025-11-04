@@ -1,0 +1,22 @@
+name: Save Artifact Example
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    generate-report:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout du code
+              uses: actions/checkout@v3
+
+            - name: Générer le fichier report.txt
+              run: echo "Rapport d'analyse" > report.txt
+
+            - name: Upload de l'artéfact
+              uses: actions/upload-artifact@v4
+              with:
+                name: rapport-analyse
+                path: report.txt
