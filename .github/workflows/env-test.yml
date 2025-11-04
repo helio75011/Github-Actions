@@ -1,0 +1,16 @@
+name: Environment Variables Example
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  show-message:
+    runs-on: ubuntu-latest
+
+    env:  # ✅ Déclaration des variables d'environnement
+      MESSAGE: "Déploiement réussi"
+
+    steps:
+      - name: Afficher la variable MESSAGE
+        run: echo "$MESSAGE"
